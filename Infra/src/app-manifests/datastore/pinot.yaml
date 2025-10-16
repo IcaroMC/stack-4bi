@@ -1,0 +1,35 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: pinot
+  namespace: gitops
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: 'git@ssh.dev.azure.com:v3/4bi-dados/master-k8s/master-k8s'
+    path: 01-infra/src/helm-charts/datastore/pinot
+    targetRevision: main
+    helm:
+      valueFiles:
+        - values.yaml
+  destination:
+      namespace: datastore
+      server: 'https://kubernetes.default.svc'
+  ignoreDifferences:
+    - group: apps
+      kind: StatefulSet
+      jsonPointers:
+        - /spec/volumeClaimTemplates
+  syncPolicy:
+    automated:
+      allowEmpty: false
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - Validate=true
+      - CreateNamespace=true
+      - PruneLast=true
+      - ServerSideApply=true
+      - RespectIgnoreDifferences=true

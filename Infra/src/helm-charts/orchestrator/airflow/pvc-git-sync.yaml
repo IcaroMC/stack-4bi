@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: git-repo-pvc # Nome do nosso volume compartilhado
+  namespace: orchestrator # Ou um namespace compartilhado como 'tools'
+spec:
+  accessModes:
+    - ReadWriteMany # O ideal. Permite que múltiplos pods montem e escrevam.
+    # Se o seu StorageClass não suporta RWM, use ReadWriteOnce.
+    # - ReadWriteOnce 
+  storageClassName: microk8s-hostpath # Ou o StorageClass que você usa
+  resources:
+    requests:
+      storage: 1Gi # 1GB deve ser mais que suficiente para os scripts

@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: git-sync-deployment
+  namespace: orchestrator # Mesmo namespace do PVC
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: git-sync
+  template:
+    metadata:
+      labels:
+        app: git-sync
+    spec:
+      containers:
+      - name: git-sync
+        image: k8s.gcr.io/git-sync/git-sync:v3.6.1
+        volumeMounts:
+        - name: git-repo-storage
+          mountPath: /tmp/git
+        env:
+        - name: GIT_ACCESS_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: secret-git-sync # Nome do nosso segredo
+              key: password            # Chave dentro do segredo        
+        - name: GIT_SYNC_REPO
+          value: "https://$(GIT_ACCESS_TOKEN)@github.com/IcaroMC/dags.git" # <-- SUBSTITUA
+        - name: GIT_SYNC_BRANCH
+          value: "main" # <-- SUBSTITUA
+        - name: GIT_SYNC_ROOT
+          value: "/tmp/git"
+        - name: GIT_SYNC_DEST
+          value: "repo" # Sincroniza na raiz do volume montado
+        - name: GIT_SYNC_WAIT
+          value: "30" # Sincroniza a cada 30 segundos
+      volumes:
+      - name: git-repo-storage
+        persistentVolumeClaim:
+          claimName: git-repo-pvc # Monta o PVC que criamos

@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: flink
+  namespace: gitops
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: 'git@ssh.dev.azure.com:v3/4bi-dados/master-k8s/master-k8s'
+    path: 01-infra/src/helm-charts/processing/flink-kubernetes-operator
+    targetRevision: main
+    helm:
+      valueFiles:
+        - values.yaml
+  destination:
+      namespace: processing
+      server: 'https://kubernetes.default.svc'
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - Validate=true
+    - CreateNamespace=true
+    - PrunePropagationPolicy=foreground
+    - PruneLast=true
