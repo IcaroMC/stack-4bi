@@ -334,10 +334,12 @@ tenant:
   exposeServices:
      console: true
      minio: true
-     consoleServiceType: NodePort
-     minioServiceType: NodePort
-     consoleNodePort: 30091   # Porta externa para o console web
-     minioNodePort: 30090        
+
+  service:
+    type: NodePort    # Define NodePort globalmente (para S3 API)
+    nodePorts:
+      api: 30090      # Porta externa para a API S3
+      console: 30091  # Porta externa para o Console       
   ###
   # The `Kubernetes Service Account <https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/>`__ associated with the Tenant.
   serviceAccountName: ""
