@@ -7,7 +7,7 @@ metadata:
     argocd.argoproj.io/secret-type: repository
 stringData:
   type: git
-  url: https://github.com/IcaroMC/master-k8s.git
+  url: https://github.com/IcaroMC/stack-4bi.git
   username: IcaroMC
   password: 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
       
