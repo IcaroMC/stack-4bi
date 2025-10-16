@@ -107,8 +107,12 @@ global:
       state: airbyte-bucket
       workloadOutput: airbyte-bucket
     s3:
-      region: "us-east-1" ## e.g. us-east-1
-      authenticationType: credentials ## Use "credentials" or "instanceProfile"
+      endpoint: "http://192.168.5.201:31500"  # IP do seu node + NodePort do MinIO
+      region: "us-east-1"                     # qualquer região (MinIO não exige)
+      authenticationType: credentials
+      accessKey: "JfqImLmjUDXSaPH4WVxF"                  # seu Access Key do MinIO
+      secretKey: "cboQlmIolUDCsyPDroOd2GApbxtzn5EI77cM92DM"               # seu Secret Key do MinIO
+      pathStyleAccess: true               # necessário para MinIO
 
     # GCS
     #bucket: ## GCS bucket names that you've created. We recommend storing the following all in one bucket.
@@ -274,7 +278,7 @@ webapp:
 
   service:
     # -- The service type to use for the webapp service
-    type: LoadBalancer
+    type: NodePort 
     # -- The service port to expose the webapp on
     port: 8081
     # -- Annotations for the webapp service resource
@@ -698,7 +702,7 @@ worker:
 
   log:
     #! -- The log level to log at.
-    level: "INFO"
+    level: "ERROR"
 
   ## Example:
   ##
@@ -845,7 +849,7 @@ workload-launcher:
 
   log:
     # -- The log level to log at
-    level: "INFO"
+    level: "ERROR"
 
   ## Example:
   ##
@@ -1000,7 +1004,7 @@ connector-rollout-worker:
 
   log:
     # -- The log level to log at
-    level: "INFO"
+    level: "ERROR"
 
   ## Example:
   ##
@@ -1583,6 +1587,7 @@ postgresql:
   affinity: {}
 
 minio:
+  enabled: false
   image:
     # -- Minio image used by Minio helm chart
     repository: minio/minio
@@ -1703,8 +1708,8 @@ cron:
 
   log:
     # -- The log level to log at.
-    level: "INFO"
-
+    level: "ERROR"
+      
   ## Examples (when using `cron.containerSecurityContext.readOnlyRootFilesystem=true`):
   ## extraVolumeMounts:
   ##   - name: tmpdir
@@ -1862,7 +1867,7 @@ connector-builder-server:
 
   log:
     # -- The log level to log at.
-    level: "INFO"
+    level: "ERROR"
 
   env_vars: {}
   service:
@@ -2054,7 +2059,7 @@ workload-api-server:
 
   log:
     # -- The log level at which to log
-    level: "INFO"
+    level: "ERROR"
 
   # -- Node labels for pod assignment, see https://kubernetes.io/docs/user-guide/node-selection/
   nodeSelector: {}
@@ -2168,7 +2173,7 @@ featureflag-server:
 
   log:
     # -- The log level at which to log
-    level: "INFO"
+    level: "ERROR"
 
   # -- Node labels for pod assignment, see https://kubernetes.io/docs/user-guide/node-selection/
   nodeSelector: {}
