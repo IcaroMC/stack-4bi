@@ -30,7 +30,7 @@ tenant:
   #
   image:
     repository: quay.io/minio/minio
-    tag: RELEASE.2024-11-07T00-52-20Z.hotfix.2e4a5c31f
+    tag: RELEASE.2024-11-07T00-52-20Z 
     pullPolicy: IfNotPresent
   ###
   #
