@@ -107,7 +107,7 @@ global:
       state: airbyte-bucket
       workloadOutput: airbyte-bucket
     s3:
-      endpoint: "http://192.168.5.201:31500"  # IP do seu node + NodePort do MinIO
+      endpoint: "http://192.168.5.201:30794"  # IP do seu node + NodePort do MinIO
       region: "us-east-1"                     # qualquer região (MinIO não exige)
       authenticationType: credentials
       accessKey: "JfqImLmjUDXSaPH4WVxF"                  # seu Access Key do MinIO
