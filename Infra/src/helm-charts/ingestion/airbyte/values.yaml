@@ -99,7 +99,7 @@ global:
     # -- The storage backend type. Supports s3, gcs, azure, minio (default)
     type: s3 # default storage used
     # -- Secret name where storage provider credentials are stored
-    #storageSecretName: "airbyte-minio-secret"
+    storageSecretName: "airbyte-minio-secret"
 
     # S3
     bucket: ## S3 bucket names that you've created. We recommend storing the following all in one bucket.
