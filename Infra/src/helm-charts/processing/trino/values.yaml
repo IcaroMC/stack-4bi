@@ -385,7 +385,7 @@ eventListenerProperties: []
 
 catalogs:
   iceberg: |
-    connector.name=iceberg
+    connector.name=4bi
     iceberg.catalog.type=hive_metastore
     iceberg.file-format=PARQUET
     iceberg.max-partitions-per-writer=10000
