@@ -4,7 +4,7 @@ dependencies:
 - condition: postgresql.enabled
   name: postgresql
   repository: https://charts.bitnami.com/bitnami
-  version: latest 
+  version: 18.0.0 
 description: A Helm chart to deploy Hive Metastore
 home: https://github.com/HEVAWEB/heva-helm-charts
 icon: https://pbs.twimg.com/profile_images/1791393282280296448/67SU68LI_400x400.png
