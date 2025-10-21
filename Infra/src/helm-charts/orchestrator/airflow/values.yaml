@@ -81,7 +81,7 @@ airflowVersion: "2.10.5"
 images:
   airflow:
     repository: apache-airflow/airflow #"localhost:32000/airflow-custom"
-    tag: "2.10.5" #"2.10.5-v5"
+    tag: "1.18.0" #"2.10.5-v5"
     # Specifying digest takes precedence over tag.
     digest: ~
     pullPolicy: IfNotPresent
