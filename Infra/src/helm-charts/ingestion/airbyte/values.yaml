@@ -99,7 +99,7 @@ global:
     # -- The storage backend type. Supports s3, gcs, azure, minio (default)
     type: s3 # default storage used
     # -- Secret name where storage provider credentials are stored
-    storageSecretName: "airbyte-minio-secret"
+    #storageSecretName: "airbyte-minio-secret"
 
     # S3
     bucket: ## S3 bucket names that you've created. We recommend storing the following all in one bucket.
@@ -110,9 +110,12 @@ global:
       endpoint: "http://192.168.5.201:31500"  # IP do seu node + NodePort do MinIO
       region: "us-east-1"                     # qualquer região (MinIO não exige)
       authenticationType: credentials
-      accessKey: MINIO_ACCESS_KEY                 # seu Access Key do MinIO
-      secretKey: MINIO_SECRET_KEY               # seu Secret Key do MinIO
+      accessKey: "minio"                 # seu Access Key do MinIO
+      secretKey: "minio123"               # seu Secret Key do MinIO
       pathStyleAccess: true               # necessário para MinIO
+    stringDataOverride:
+      s3-access-key-id: "minio"
+      s3-secret-access-key: "minio123"        
 
     # GCS
     #bucket: ## GCS bucket names that you've created. We recommend storing the following all in one bucket.
