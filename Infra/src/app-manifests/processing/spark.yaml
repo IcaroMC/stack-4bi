@@ -8,8 +8,8 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/IcaroMC/master-k8s.git'
-    path: 01-infra/src/helm-charts/processing/spark-operator
+    repoURL: 'https://github.com/IcaroMC/stack-4bi.git'
+    path: Infra/src/helm-charts/processing/spark-operator
     targetRevision: main
     helm:
       valueFiles:
