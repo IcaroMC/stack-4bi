@@ -107,7 +107,7 @@ global:
       state: airbyte-bucket
       workloadOutput: airbyte-bucket
     s3:
-      endpoint: "http://datalake-hl.ingestion.svc.cluster.local:9000"  # IP do seu node + NodePort do MinIO
+      endpoint: "http://datalake-hl.deepstore.svc.cluster.local:9000"  # IP do seu node + NodePort do MinIO
       region: "us-east-1"                     # qualquer região (MinIO não exige)
       authenticationType: credentials
       accessKey: "minio"                 # seu Access Key do MinIO
