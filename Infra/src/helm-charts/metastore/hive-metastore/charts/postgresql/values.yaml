@@ -107,8 +107,8 @@ diagnosticMode:
 image:
   registry: docker.io
   repository: bitnami/postgresql
-  tag: 16.7.27 
-  digest: "sha256:4ed63727a46ff6e6e1cc48b87c75c4b2abe9e5901d38079ba22768895c00de7a"
+  tag: sha256-7545f4e5a7d7abaf76e59e2b876979e94060b3c1f2b97a691215254a43274b53.sig 
+  digest: ""
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
   ## ref: https://kubernetes.io/docs/concepts/containers/images/#pre-pulled-images
