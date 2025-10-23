@@ -106,8 +106,8 @@ diagnosticMode:
 ##
 image:
   registry: docker.io
-  repository: ubuntu/postgres
-  tag: 14-22.04_edge
+  repository: postgres
+  tag: 16 
   digest: ""
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
