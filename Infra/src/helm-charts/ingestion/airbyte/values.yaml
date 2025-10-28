@@ -157,11 +157,11 @@ global:
     resources:
       requests:
         cpu: "2"
-        memory: "1Gi"
+        memory: "2Gi"
 
       limits:
         cpu: "3"
-        memory: "2Gi"
+        memory: "3Gi"
 
     local:
       volume:
@@ -687,11 +687,11 @@ worker:
   ## lines, adjust them as necessary, and remove the curly braces after 'resources:'.
   resources:
     requests:
-      memory: "512Mi"
-      cpu: "250m"
-    limits:
       memory: "1Gi"
-      cpu: "500m" 
+      cpu: "2"
+    limits:
+      memory: "2Gi"
+      cpu: "3" 
 
   # -- Node labels for pod assignment, see https://kubernetes.io/docs/user-guide/node-selection/
   nodeSelector: {}
@@ -1598,7 +1598,7 @@ minio:
     tag: RELEASE.2023-11-20T22-40-07Z
 
   storage:
-    volumeClaimValue: 500Mi
+    volumeClaimValue: 5Gi
 
   # -- Node labels for pod assignment, see https://kubernetes.io/docs/user-guide/node-selection/
   ##
