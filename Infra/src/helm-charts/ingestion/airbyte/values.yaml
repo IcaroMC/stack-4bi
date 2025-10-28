@@ -688,10 +688,10 @@ worker:
   resources:
     requests:
       memory: "1Gi"
-      cpu: "2"
+      cpu: "1"
     limits:
       memory: "2Gi"
-      cpu: "3" 
+      cpu: "2" 
 
   # -- Node labels for pod assignment, see https://kubernetes.io/docs/user-guide/node-selection/
   nodeSelector: {}
