@@ -1446,7 +1446,7 @@ volumePermissions:
   image:
     registry: docker.io
     repository: postgres/os-shell
-    tag: 16
+    tag: 16.10-alpine3.21
     digest: ""
     pullPolicy: IfNotPresent
     ## Optionally specify an array of imagePullSecrets.
@@ -1555,7 +1555,7 @@ metrics:
   image:
     registry: docker.io
     repository: postgres/postgres-exporter
-    tag: 16
+    tag: 16.10-alpine3.21
     digest: ""
     pullPolicy: IfNotPresent
     ## Optionally specify an array of imagePullSecrets.
