@@ -212,7 +212,7 @@ postgresql:
       enabled: true
       ##
       ## Persistent class
-      # storageClass: classname
+      storageClass: microk8s-hostpath
       ##
       ## Access modes:
       ## @param postgresql.primary.persistence.accessModes PVC Access Mode for PostgreSQL volume
