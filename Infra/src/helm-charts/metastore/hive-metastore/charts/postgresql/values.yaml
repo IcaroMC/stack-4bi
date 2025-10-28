@@ -247,7 +247,7 @@ ldap:
   uri: ""
 ## @param postgresqlDataDir PostgreSQL data dir folder
 ##
-postgresqlDataDir: /bitnami/postgresql/data
+postgresqlDataDir: /var/lib/postgresql/data
 ## @param postgresqlSharedPreloadLibraries Shared preload libraries (comma-separated list)
 ##
 postgresqlSharedPreloadLibraries: "pgaudit"
@@ -780,7 +780,7 @@ primary:
     ## @param primary.persistence.mountPath The path the volume will be mounted at
     ## Note: useful when using custom PostgreSQL images
     ##
-    mountPath: /bitnami/postgresql
+    mountPath: /var/run/postgresql
     ## @param primary.persistence.subPath The subdirectory of the volume to mount to
     ## Useful in dev environments and one PV for multiple services
     ##
@@ -1231,7 +1231,7 @@ readReplicas:
     ## @param readReplicas.persistence.mountPath The path the volume will be mounted at
     ## Note: useful when using custom PostgreSQL images
     ##
-    mountPath: /bitnami/postgresql
+    mountPath: /var/run/postgresql
     ## @param readReplicas.persistence.subPath The subdirectory of the volume to mount to
     ## Useful in dev environments and one PV for multiple services
     ##
