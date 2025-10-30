@@ -208,6 +208,17 @@ serviceAccount:
   # -- Name of the service account to use. If not set and create is true, a name is generated using the fullname template.
   name: service-account-name
 
+rbac:
+  create: true
+  rules:
+    - apiGroups: [""]
+      resources: ["pods", "pods/log", "pods/status"]
+      verbs: ["get", "list", "watch", "create", "delete"]
+    - apiGroups: ["batch"]
+      resources: ["jobs"]
+      verbs: ["get", "list", "create", "delete"]
+
+
 # -- Sets the AIRBYTE_VERSION environment variable. Defaults to Chart.AppVersion.
 ## If changing the image tags below, you should probably also update this.
 version: ""
