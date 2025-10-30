@@ -1227,3 +1227,6 @@ minio:
       # bucket [true|false]
       versioning: false
 
+extraEnvVars:
+  - name: N8N_SECURE_COOKIE
+    value: "false"
