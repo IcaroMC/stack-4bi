@@ -206,7 +206,7 @@ serviceAccount:
   # -- Annotations for service account. Evaluated as a template. Only used if `create` is `true`.
   annotations: {}
   # -- Name of the service account to use. If not set and create is true, a name is generated using the fullname template.
-  name: service-account-name
+  name: *service-account-name
 
 rbac:
   create: true
