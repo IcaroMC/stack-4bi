@@ -702,7 +702,7 @@ worker:
       cpu: "500m"
     limits:
       memory: "1Gi"
-      cpu: "1" 
+      cpu: "600m" 
 
   # -- Node labels for pod assignment, see https://kubernetes.io/docs/user-guide/node-selection/
   nodeSelector: {}
