@@ -156,12 +156,12 @@ global:
   jobs:
     resources:
       requests:
-        cpu: "2"
-        memory: "2Gi"
+        cpu: "300m"
+        memory: "512Mii"
 
       limits:
-        cpu: "3"
-        memory: "3Gi"
+        cpu: "600m"
+        memory: "1Gi"
 
     local:
       volume:
