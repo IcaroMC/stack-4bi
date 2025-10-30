@@ -1050,7 +1050,7 @@ externalRedis:
 # -- Bitnami PostgreSQL configuration
 postgresql:
   # -- Enable postgresql
-  enabled: enable 
+  enabled: true 
   # -- Enable postgresql architecture.
   architecture: standalone
 
