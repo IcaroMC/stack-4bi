@@ -699,7 +699,7 @@ worker:
   resources:
     requests:
       memory: "512Mi"
-      cpu: "512"
+      cpu: "500m"
     limits:
       memory: "1Gi"
       cpu: "1" 
