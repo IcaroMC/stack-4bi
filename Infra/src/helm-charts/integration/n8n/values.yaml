@@ -368,27 +368,10 @@ main:
     labels: {}
 
   # -- Extra environment variables
-  extraEnvVars:
-  # --- Configurações do banco PostgreSQL ---
-    - name: DB_TYPE
-      value: "postgresdb"
-    - name: DB_POSTGRESDB_HOST
-      value: "postgresql.integration.svc.cluster.local"
-    - name: DB_POSTGRESDB_PORT
-      value: "5432"
-    - name: DB_POSTGRESDB_DATABASE
-      value: "n8n_db"
-    - name: DB_POSTGRESDB_SCHEMA
-      value: "public"
-    - name: DB_POSTGRESDB_USER
-      value: "n8n"
-    - name: DB_POSTGRESDB_PASSWORD
-      valueFrom:
-        secretKeyRef:
-          name: postgresql
-          key: postgres-password
+  extraEnvVars: {}
 
-  # -- Extra secrets for environment variables
+      # -- Extra secrets for environment var
+      # iables
   extraSecretNamesForEnvFrom: []
 
   # -- Additional volumes on the output Deployment definition.
@@ -877,7 +860,7 @@ encryptionKey: ""
 existingEncryptionKeySecret: ""
 
 # -- For instance, the Schedule node uses it to know at what time the workflow should start. Find you timezone from here: https://momentjs.com/timezone/
-timezone: "Europe/Berlin"
+timezone: "America/Recife"
 
 # -- A locale identifier, compatible with the Accept-Language header. n8n doesn't support regional identifiers, such as de-AT.
 defaultLocale: en
@@ -1067,7 +1050,7 @@ externalRedis:
 # -- Bitnami PostgreSQL configuration
 postgresql:
   # -- Enable postgresql
-  enabled: false
+  enabled: enable 
   # -- Enable postgresql architecture.
   architecture: standalone
 
@@ -1094,9 +1077,9 @@ postgresql:
   # -- This is for setting up the auth.
   auth:
     # -- This is for setting up the auth username.
-    username: ""
+    username: "n8n"
     # -- This is for setting up the auth password.
-    password: ""
+    password: "n8n!$@123"
     # -- The name of the PostgreSQL database. For more information: https://docs.n8n.io/hosting/configuration/supported-databases-settings/#required-permissions
     database: "n8n"
 
@@ -1105,7 +1088,7 @@ externalPostgresql:
   # -- External PostgreSQL server host
   host: ""
   # -- External PostgreSQL username
-  username: "postgres"
+  username: ""
   # -- External PostgreSQL password
   password: ""
   # -- External PostgreSQL server port
