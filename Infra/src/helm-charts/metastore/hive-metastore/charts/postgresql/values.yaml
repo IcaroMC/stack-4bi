@@ -631,19 +631,7 @@ primary:
   ##     image: busybox
   ##     command: ['do', 'something']
   ##
-  initContainers:
-    - name: force-clean-dirty-volume
-      image: bitnami/os-shell:latest
-      command:
-        - /bin/sh
-        - -c
-        - |
-          echo "Forcibly cleaning directory /bitnami/postgresql/ to prevent initdb failure..."
-          rm -rf /bitnami/postgresql/*
-          echo "Directory clean."
-      volumeMounts:
-        - name: data
-          mountPath: /bitnami/postgresql    
+  initContainers: []
   ## Pod Disruption Budget configuration
   ## ref: https://kubernetes.io/docs/tasks/run-application/configure-pdb
   ## @param primary.pdb.create Enable/disable a Pod Disruption Budget creation
@@ -792,7 +780,7 @@ primary:
     ## @param primary.persistence.mountPath The path the volume will be mounted at
     ## Note: useful when using custom PostgreSQL images
     ##
-    mountPath: /bitnami/postgresql 
+    mountPath: /mnt/data 
     ## @param primary.persistence.subPath The subdirectory of the volume to mount to
     ## Useful in dev environments and one PV for multiple services
     ##
