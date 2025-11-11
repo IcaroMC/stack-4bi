@@ -107,7 +107,7 @@ diagnosticMode:
 image:
   registry: docker.io
   repository: postgres
-  tag: 16.10-alpine3.21 
+  tag: "13-alpine" 
   digest: ""
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'

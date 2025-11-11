@@ -156,12 +156,12 @@ global:
   jobs:
     resources:
       requests:
-        cpu: "300m"
-        memory: "512Mi"
+        cpu: 300m
+        memory: 512Mi
 
       limits:
-        cpu: "600m"
-        memory: "1Gi"
+        cpu: 600m
+        memory: 1Gi
 
     local:
       volume:
@@ -698,11 +698,11 @@ worker:
   ## lines, adjust them as necessary, and remove the curly braces after 'resources:'.
   resources:
     requests:
-      memory: "512Mi"
-      cpu: "500m"
+      memory: 512Mi
+      cpu: 500m
     limits:
-      memory: "1Gi"
-      cpu: "600m" 
+      memory: 1Gi
+      cpu: 600m 
 
   # -- Node labels for pod assignment, see https://kubernetes.io/docs/user-guide/node-selection/
   nodeSelector: {}
