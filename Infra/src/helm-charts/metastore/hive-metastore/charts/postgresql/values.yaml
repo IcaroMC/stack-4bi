@@ -780,7 +780,7 @@ primary:
     ## @param primary.persistence.mountPath The path the volume will be mounted at
     ## Note: useful when using custom PostgreSQL images
     ##
-    mountPath: /mnt/data 
+    mountPath: /mnt/postgres/data 
     ## @param primary.persistence.subPath The subdirectory of the volume to mount to
     ## Useful in dev environments and one PV for multiple services
     ##
