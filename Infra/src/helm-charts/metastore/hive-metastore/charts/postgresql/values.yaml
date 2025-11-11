@@ -247,7 +247,7 @@ ldap:
   uri: ""
 ## @param postgresqlDataDir PostgreSQL data dir folder
 ##
-postgresqlDataDir: /var/lib/postgresql/data
+postgresqlDataDir: /bitnami/postgresql
 ## @param postgresqlSharedPreloadLibraries Shared preload libraries (comma-separated list)
 ##
 postgresqlSharedPreloadLibraries: "pgaudit"
@@ -492,7 +492,7 @@ primary:
     fsGroupChangePolicy: Always
     sysctls: []
     supplementalGroups: []
-    fsGroup: 999
+    fsGroup: 1001
   ## Container Security Context
   ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
   ## @param primary.containerSecurityContext.enabled Enabled containers' Security Context
@@ -509,8 +509,8 @@ primary:
   containerSecurityContext:
     enabled: true
     seLinuxOptions: {}
-    runAsUser: 999
-    runAsGroup: 999
+    runAsUser: 1001
+    runAsGroup: 1001
     runAsNonRoot: true
     privileged: false
     readOnlyRootFilesystem: true
@@ -780,7 +780,7 @@ primary:
     ## @param primary.persistence.mountPath The path the volume will be mounted at
     ## Note: useful when using custom PostgreSQL images
     ##
-    mountPath: /var/lib/postgresql/data
+    mountPath: /bitnami/postgresql 
     ## @param primary.persistence.subPath The subdirectory of the volume to mount to
     ## Useful in dev environments and one PV for multiple services
     ##
@@ -1435,7 +1435,7 @@ backup:
 volumePermissions:
   ## @param volumePermissions.enabled Enable init container that changes the owner and group of the persistent volume
   ##
-  enabled: true
+  enabled: false
   ## @param volumePermissions.image.registry [default: REGISTRY_NAME] Init container volume-permissions image registry
   ## @param volumePermissions.image.repository [default: REPOSITORY_NAME/os-shell] Init container volume-permissions image repository
   ## @skip volumePermissions.image.tag Init container volume-permissions image tag (immutable tags are recommended)
