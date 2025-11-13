@@ -224,6 +224,8 @@ postgresql:
       accessModes:
         - ReadWriteOnce
 
+    extraConfig: |
+      password_encryption = 'md5'
     # The apache hive docker image has a jdbc driver that doesn't use the latest encryption
     # settings. Tell postgres to allow access any way
     ## @param postgresql.primary.extendedConfiguration [default: password_encryption=md5] Extended PostgreSQL Primary configuration (appended to main or default configuration)
