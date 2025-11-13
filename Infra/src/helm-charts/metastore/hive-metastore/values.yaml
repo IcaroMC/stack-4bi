@@ -194,7 +194,7 @@ postgresql:
     username: hive
     password: hive
     database: metastore
-    passwordEncryption: "md5"
+    passwordEncryption: "scram-sha-256"
 
   ## PostgreSQL global parameters
   ## @param postgresql.global.postgresql.auth.username Name for a custom user to create (overrides `auth.username`)
@@ -225,7 +225,7 @@ postgresql:
         - ReadWriteOnce
 
     extraConfig: |
-      password_encryption = 'md5'
+      password_encryption = 'scram-sha-256'
     # The apache hive docker image has a jdbc driver that doesn't use the latest encryption
     # settings. Tell postgres to allow access any way
     ## @param postgresql.primary.extendedConfiguration [default: password_encryption=md5] Extended PostgreSQL Primary configuration (appended to main or default configuration)
