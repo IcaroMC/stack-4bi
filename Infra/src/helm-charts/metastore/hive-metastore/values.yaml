@@ -190,6 +190,10 @@ postgresql:
   ## Set to false if bringing your own PostgreSQL.
   ## @param postgresql.enabled Switch to enable or disable the PostgreSQL helm chart
   enabled: true
+  auth:
+    username: hive
+    password: hive
+    database: metastore
 
   ## PostgreSQL global parameters
   ## @param postgresql.global.postgresql.auth.username Name for a custom user to create (overrides `auth.username`)
