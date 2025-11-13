@@ -200,12 +200,12 @@ postgresql:
   ## @param postgresql.global.postgresql.auth.username Name for a custom user to create (overrides `auth.username`)
   ## @param postgresql.global.postgresql.auth.password Password for the custom user to create (overrides `auth.password`)
   ## @param postgresql.global.postgresql.auth.database Name for a custom database to create (overrides `auth.database`)
-  global:
-    postgresql:
-      auth:
-        username: hive
-        password: hive
-        database: metastore
+  #  global:
+  #  postgresql:
+  #    auth:
+  #      username: hive
+  #      password: hive
+  #      database: metastore
 
   primary:
     ##
