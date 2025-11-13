@@ -194,6 +194,7 @@ postgresql:
     username: hive
     password: hive
     database: metastore
+    passwordEncryption: "md5"
 
   ## PostgreSQL global parameters
   ## @param postgresql.global.postgresql.auth.username Name for a custom user to create (overrides `auth.username`)
