@@ -189,7 +189,7 @@ postgresql:
   ## Use the PostgreSQL chart dependency.
   ## Set to false if bringing your own PostgreSQL.
   ## @param postgresql.enabled Switch to enable or disable the PostgreSQL helm chart
-  enabled: true
+  enabled: false
   auth:
     username: hive
     password: hive
