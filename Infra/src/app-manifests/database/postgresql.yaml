@@ -11,9 +11,9 @@ spec:
     repoURL: 'https://github.com/IcaroMC/stack-4bi.git'
     path: Infra/src/kubernetes-yaml/database/postgresql
     targetRevision: main
-    helm:
-      valueFiles:
-        - postgresql-metastore.yaml
+    # helm:
+    #   valueFiles:
+    #     - postgresql-metastore.yaml
   destination:
       namespace: databases
       server: 'https://kubernetes.default.svc'
