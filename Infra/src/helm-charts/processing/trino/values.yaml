@@ -385,7 +385,7 @@ eventListenerProperties: []
 
 catalogs:
   prod: |
-    connector.name=prod
+    connector.name=iceberg
     iceberg.catalog.type=hive_metastore
     iceberg.file-format=PARQUET
     iceberg.max-partitions-per-writer=10000
@@ -397,7 +397,7 @@ catalogs:
     s3.path-style-access=true
     s3.region=us-east-1
   dev: |
-    connector.name=dev
+    connector.name=iceberg
     iceberg.catalog.type=hive_metastore
     iceberg.file-format=PARQUET
     iceberg.max-partitions-per-writer=10000
