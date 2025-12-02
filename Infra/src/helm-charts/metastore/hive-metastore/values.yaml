@@ -131,7 +131,7 @@ connections:
     ## @param connections.database.username [default: hive] Database username
     username: hive
     ## @param connections.database.password [default: hive] Database password
-    password: md50b6ce9901e5a29586aea84b023334166
+    password: hive-metastore-db-secret
     ## @param connections.database.database [default: metastore] Hive database name
     database: metastore_db
     ## @param connections.database.host Databas host
