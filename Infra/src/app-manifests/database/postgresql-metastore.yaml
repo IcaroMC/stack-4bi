@@ -9,7 +9,7 @@ spec:
   project: default
   source:
     repoURL: 'https://github.com/IcaroMC/stack-4bi.git'
-    path: Infra/src/kubernetes-yaml/database/postgresql
+    path: Infra/src/kubernetes-yaml/metastore/postgresql
     targetRevision: main
     # helm:
     #   valueFiles:
