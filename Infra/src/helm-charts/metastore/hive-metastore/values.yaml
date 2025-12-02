@@ -123,9 +123,6 @@ extraVolumes: []
 ## @section Hive Parameters
 
 # Define hive connections to other services
-#Criando a senha em MD5 
-#echo -n "md5"; echo -n "Hive@123push..." | md5sum | awk '{print $1}'
-
 connections:
   database:
     ## @param connections.database.username [default: hive] Database username
