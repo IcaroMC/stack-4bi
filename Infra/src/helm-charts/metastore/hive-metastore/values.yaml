@@ -128,13 +128,14 @@ connections:
     ## @param connections.database.username [default: hive] Database username
     username: hive
     ## @param connections.database.password [default: hive] Database password
-    password: "Hive@123!$..."
+    password: md50b6ce9901e5a29586aea84b023334166
     ## @param connections.database.database [default: metastore] Hive database name
     database: metastore_db
     ## @param connections.database.host Databas host
     host: "postgres-metastore-service"  #{{ .Release.Name }}-postgresql"
     ## @param connections.database.port [default: 5432] Database port
     port: 5432
+    passwordEncryption: "md5"    
 
 # Update hive-site.xml file
 conf:
