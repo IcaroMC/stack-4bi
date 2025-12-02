@@ -132,7 +132,7 @@ connections:
     ## @param connections.database.database [default: metastore] Hive database name
     database: metastore_db
     ## @param connections.database.host Databas host
-    host: "http://postgres-metastore-service.deepstore.svc.cluster.local"  #{{ .Release.Name }}-postgresql"
+    host: "192.168.4.201"  #{{ .Release.Name }}-postgresql"
     ## @param connections.database.port [default: 5432] Database port
     port: 5432
 
