@@ -11,9 +11,9 @@ spec:
     repoURL: 'https://github.com/IcaroMC/master-k8s.git'
     path: Infra/src/helm-charts/database/postgresql
     targetRevision: main
-    # helm:
-    #   valueFiles:
-    #     - values.yaml
+    helm:
+      valueFiles:
+        - postgresql-metastore.yaml
   destination:
       namespace: databases
       server: 'https://kubernetes.default.svc'
