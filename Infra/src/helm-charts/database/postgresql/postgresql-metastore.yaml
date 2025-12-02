@@ -1,0 +1,80 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: hive-metastore-db-secret
+  namespace: deepstore
+type: Opaque
+stringData:
+  # Altere para uma palavra-passe forte
+  postgres-password: "Hive@123!$..."
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: postgres-pvc
+  namespace: deepstore
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+  # Se estiver na AWS (EBS), GKE ou Azure, a storageClassName default funcionará.
+  # Caso contrário, defina explicitamente:
+  # storageClassName: standard
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres-metastore
+  namespace: deepstore
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgres-metastore
+  template:
+    metadata:
+      labels:
+        app: postgres-metastore
+    spec:
+      containers:
+        - name: postgres
+          # Usamos a versão 12 para garantir compatibilidade nativa com Hive 3.1.3
+          image: postgres:12
+          ports:
+            - containerPort: 5432
+          env:
+            - name: POSTGRES_DB
+              value: "metastore_db"
+            - name: POSTGRES_USER
+              value: "hive"
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: hive-metastore-db-secret
+                  key: postgres-password
+            # Garante que os dados sejam guardados no disco persistente
+            - name: PGDATA
+              value: /var/lib/postgresql/data/pgdata
+          volumeMounts:
+            - name: postgres-storage
+              mountPath: /var/lib/postgresql/data
+      volumes:
+        - name: postgres-storage
+          persistentVolumeClaim:
+            claimName: postgres-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres-metastore-service
+  namespace: deepstore
+spec:
+  selector:
+    app: postgres-metastore
+  ports:
+    - protocol: TCP
+      port: 5432
+      targetPort: 5432
+  type: ClusterIP
