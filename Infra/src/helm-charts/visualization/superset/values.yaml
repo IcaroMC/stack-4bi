@@ -211,11 +211,11 @@ initImage:
   pullPolicy: IfNotPresent
 
 service:
-  type: LoadBalancer
+  type: NodePort
   port: 8088
   annotations: {}
     # cloud.google.com/load-balancer-type: "Internal"
-  loadBalancerIP: 192.168.40.46
+  loadBalancerIP: ~
   nodePort: {}
 
 ingress:
@@ -791,18 +791,18 @@ postgresql:
   ##
   ## Use the PostgreSQL chart dependency.
   ## Set to false if bringing your own PostgreSQL.
-  enabled: true
+  enabled: false
 
   ## Authentication parameters
   auth:
     ## The name of an existing secret that contains the postgres password.
-    existingSecret:
+    existingSecret: superset-visualization-db-secret
     ## PostgreSQL name for a custom user to create
-    username: superset
+    username: postgres-user
     ## PostgreSQL password for the custom user to create. Ignored if `auth.existingSecret` with key `password` is provided
-    password: superset
+    password: postgres-password
     ## PostgreSQL name for a custom database to create
-    database: superset
+    database: superset_db
 
   image:
     tag: "14.6.0-debian-11-r13"
