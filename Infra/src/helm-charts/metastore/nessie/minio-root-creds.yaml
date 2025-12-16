@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: minio-root-creds # Nome usado no values.yaml acima
+  namespace: metastore
+type: Opaque
+stringData:
+  # Use o usuário/senha que você definiu na instalação do MinIO Standalone
+  access-key: minio
+  secret-key: minio123
