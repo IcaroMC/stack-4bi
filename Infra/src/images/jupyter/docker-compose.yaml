@@ -1,0 +1,64 @@
+version: '3'
+
+x-spark-common: &spark-common
+  image: edilsonathayde/spark-master:lakehouse-arm64-3.4.1  # Imagem customizada do Spark
+  user: root  # Usuário root para o container
+  networks:
+    - net_lakehouse  # Rede definida para comunicação entre os containers
+  extra_hosts:
+    - "host.docker.internal:host-gateway"  # Acesso à rede do host
+  env_file:
+    - .env  # Arquivo .env para variáveis de ambiente
+
+services:
+  spark-master:
+    <<: *spark-common  # Herda configurações do spark-common
+    hostname: spark-master
+    container_name: spark-master 
+    command: >
+      /opt/bitnami/spark/sbin/start-master.sh  # Comando para iniciar o Spark Master
+    ports:
+      - "7077:7077"  # Porta do Spark Master
+      - "8080:8080"  # UI do Spark Master
+
+  spark-worker1:
+    <<: *spark-common  # Herda configurações do spark-common
+    hostname: spark-worker1
+    container_name: spark-worker1
+    command: >
+      /opt/bitnami/spark/sbin/start-worker.sh spark-master:7077  # Conecta ao Spark Master
+    ports:
+      - "4040:4040"  # UI do Spark Worker 1
+
+  spark-worker2:
+    <<: *spark-common  # Herda configurações do spark-common
+    hostname: spark-worker2
+    container_name: spark-worker2
+    command: >
+      /opt/bitnami/spark/sbin/start-worker.sh spark-master:7077  # Conecta ao Spark Master
+    ports:
+      - "4041:4041"  # UI do Spark Worker 2
+
+  jupyter:
+    <<: *spark-common  # Herda configurações do spark-common
+    hostname: jupyter
+    container_name: jupyter 
+    ports:
+      - "8888:8888"  # Porta do Jupyter Lab
+    volumes:
+      - ${NOTEBOOK_PATH}:/opt/bitnami/spark/notebooks  # Volume para notebooks (caminho configurável no .env)
+    depends_on:
+      - spark-master  # Jupyter depende do Spark Master para funcionar
+    command: >
+      jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token='' --notebook-dir=/opt/bitnami/spark/notebooks
+    environment:
+      - SPARK_MASTER=spark://spark-master:7077  # URL do Spark Master para o Jupyter
+      - PYSPARK_PYTHON=/opt/bitnami/python/bin/python  # Caminho correto do Python para PySpark
+      - PYSPARK_DRIVER_PYTHON=jupyter  # Inicia o Jupyter como o driver do PySpark
+      - PYSPARK_DRIVER_PYTHON_OPTS="lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root"  # Opções do Jupyter Lab
+    stdin_open: true
+    tty: true  # Permite interatividade no terminal do container
+
+networks:
+  net_lakehouse:
+    external: true  # Usa uma rede externa chamada 'net_lakehouse'
