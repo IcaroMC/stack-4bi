@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: postgresql-metastore-db
+  name: postgresql-superset-db
   namespace: gitops
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -9,11 +9,11 @@ spec:
   project: default
   source:
     repoURL: 'https://github.com/IcaroMC/stack-4bi.git'
-    path: Infra/src/kubernetes-yaml/visualization/postgresql
+    path: Infra/src/helm-charts/visualization/superset/postgresql
     targetRevision: main
     # helm:
     #   valueFiles:
-    #     - postgresql-metastore.yaml
+    #     - postgresql-superset.yaml
   destination:
       namespace: databases
       server: 'https://kubernetes.default.svc'
