@@ -15,7 +15,7 @@ spec:
     #   valueFiles:
     #     - postgresql-superset.yaml
   destination:
-      namespace: databases
+      namespace: visualization
       server: 'https://kubernetes.default.svc'
   syncPolicy:
     syncOptions:
