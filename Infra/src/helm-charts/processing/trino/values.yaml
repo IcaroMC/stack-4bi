@@ -384,12 +384,22 @@ eventListenerProperties: []
 # ```
 
 catalogs:
-  lakehouse: |
+  nessie: |
     connector.name=iceberg
-    iceberg.catalog.type=hive_metastore
+    iceberg.catalog.type=nessie
+    iceberg.compression-codec=SNAPPY
     iceberg.file-format=PARQUET
+    iceberg.nessie-catalog.ref=main
+    iceberg.nessie-catalog.uri=http://nessie.metastore.svc.cluster.local:19120/api/v2
+    iceberg.nessie-catalog.default-warehouse-dir=s3a://warehouse
+    
     iceberg.max-partitions-per-writer=10000
-    hive.metastore.uri=thrift://hive-metastore.deepstore.svc.cluster.local:9083
+    iceberg.query-partition-filter-required=true
+    iceberg.unique-table-location=true
+    iceberg.target-max-file-size=512MB
+    iceberg.extended-statistics.enabled=true
+    iceberg.expire-snapshots.min-retention=7d
+
     fs.native-s3.enabled=true
     s3.aws-access-key=minio
     s3.aws-secret-key=minio123
